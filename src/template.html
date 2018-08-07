@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>ML Console - __TITLE__</title>
+
+    <!-- CSS stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <link href="__ROOT__/css/mlconsole.css" rel="stylesheet" />
+
+    <!-- fonts -->
+    <link href="__ROOT__/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-light fixed-top" id="topnav">
+      <a class="navbar-brand" href="__ROOT__/">
+	<img src="__ROOT__/images/iStock-856014222.png" height="30" class="d-inline-block align-top" alt="" />
+	<span>ML Console</span>
+      </a>
+      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="navbar-nav ml-auto">
+__NAVITEMS__
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+
+__CONTENT__
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Brought to you by <a href="http://linkedin.com/in/fgeorges/">Florent Georges</a>,
+          with support from <a href="http://h2o.consulting/">H2O Consulting</a>.</span>
+      </div>
+    </footer>
+
+    <!--footer style="text-align: center; font-size: 75%; position: absolute; bottom: 0; height:60px;">
+      <p>Brought to you by <a href="http://linkedin.com/in/fgeorges/">Florent Georges</a>,
+	with support from <a href="http://h2o.consulting/">H2O Consulting</a>.</p>
+    </footer>
+
+    <footer style="text-align: center; font-size: 75%">
+      <p>Brought to you by <a href="http://linkedin.com/in/fgeorges/">Florent Georges</a>,
+	with support from <a href="http://h2o.consulting/">H2O Consulting</a>.</p>
+    </footer>
+
+    <div style="text-align: center; font-size: 75%; min-height: 100%; margin-bottom: -50px;">
+      <p>Brought to you by <a href="http://linkedin.com/in/fgeorges/">Florent Georges</a>,
+	with support from <a href="http://h2o.consulting/">H2O Consulting</a>.</p>
+      <div style="height: 50px;"></div>
+    </div>
+    <footer style="height: 50px;"></footer-->
+
+    <!-- JS libraries -->
+    <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script>
+       $(document).ready(function() {
+          $('table').addClass('table');
+       });
+    </script>
+
+  </body>
+</html>
