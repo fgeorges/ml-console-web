@@ -99,7 +99,11 @@ h3 {
     font-weight: 600;
 }
 
-a,
+a {
+    color: #333;
+}
+
+p a,
 a:hover,
 a:focus {
     color: #797428; 

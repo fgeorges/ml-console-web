@@ -130,7 +130,7 @@ function compile(path, href, title, menu) {
     const root   = href.includes('/') ? '..' : '.';
     const before = menu ? menuBefore(root, path) : noMenuBefore();
     const after  = menu ? menuAfter(root, path)  : noMenuAfter();
-    const nav    = navitems(root, navbar, menu ? 'doc' : path);
+    const nav    = navitems(root, navbar, menu ? 'intro' : path);
     const html   = template
 	  .replace(/__ROOT__/g,    root)
 	  .replace('__TITLE__',    title)
