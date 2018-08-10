@@ -2,8 +2,14 @@
 
 The browser let you browse the content of a database.
 
-Once you have selected a database to browse, you get a form with three options:
-browse documents, collections, or triples.
+Once you have selected a database to browse, you get a form with three options.
+You can browse:
+
+- [Documents](#documents)
+- [Collections](#collections)
+- [Triples](#triples)
+
+Some aspects of the browser can be configured.  See the section [Config](config).
 
 ## Documents
 

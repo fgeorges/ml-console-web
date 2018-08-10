@@ -9,8 +9,8 @@ QConsole from day one.  Which, to be honest, is a bit intimidating.
 
 It provides 5 main areas:
 
-- the browser
-- jobs and tasks
-- the projects manager
-- documents helper
-- the profiler
+- [Browser](../browser/)
+- [Jobs and tasks](../jobs/)
+- [Project manager](../projects/)
+- [Documents helper](../documents/)
+- [Profiler](../profiler/)
