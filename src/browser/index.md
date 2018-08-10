@@ -16,12 +16,12 @@ Some aspects of the browser can be configured.  See the section [Config](config)
 The browser exposes the documents as if their URI were paths on a filesystem,
 so you can browse in a directory-like way:
 
-![Screenshot of the document browser](../images/browser-docs.png)
+![The document browser](../images/browser-docs.png)
 
 When you select a document, you can see alsmot all of the information about it
 (including its content, syntax-highlighted):
 
-![Screenshot of the document editor](../images/browser-doc-editor.png)
+![The document editor](../images/browser-doc-editor.png)
 
 You can also edit (or add/remove) the following properties:
 
@@ -45,7 +45,7 @@ when browsing the documents by URI as if they were in directories.
 When you select a collection though, it gives you the list of all the documents
 part of that collection.
 
-![Screenshot of the collection browser](../images/browser-colls.png)
+![The collection browser](../images/browser-colls.png)
 
 The browsing entry points from the database page are:
 
@@ -58,7 +58,7 @@ The browsing entry points from the database page are:
 You can also browse triples.  Whether they are managed, non-managed, or exposed
 directly through TDE templates does not matter:
 
-![Screenshot of the collection browser](../images/browser-triples.png)
+![The resource/triple browser](../images/browser-triples.png)
 
 For one specific resource, it shows:
 
