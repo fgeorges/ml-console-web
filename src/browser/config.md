@@ -16,10 +16,19 @@ browser screen):
 
 ![The config doc creation form](../images/create-config-docs.png)
 
+### Location
+
 There are three locations where we can have configuration for a specific
-database.  Let's say we look at the `Document` database.  The first location the
-Console looks at for config is `http://expath.org/ml/console/config.xml`, on the
-`Documents` itself.
+database:
+
+- `http://expath.org/ml/console/config.xml` (on the database it configures)
+- `http://expath.org/ml/console/config/{db}.xml`
+- `http://expath.org/ml/console/defaults.xml`
+
+Let's say we look at the `Document` database.  The first location the
+Console looks at for config is
+`http://expath.org/ml/console/config.xml`, on the `Documents` database
+itself.
 
 Then it looks at `http://expath.org/ml/console/config/Documents.xml` (with the
 name of the database part of the URI), but this time on the ML Console database
@@ -36,6 +45,7 @@ prefixes, which are usually quite standard.)
 ### Format
 
 **TODO**: Blah blah blah...
+"Created for you", etc.
 
     <config xmlns="http://expath.org/ns/ml/console">
        <uri-schemes>
@@ -51,15 +61,37 @@ prefixes, which are usually quite standard.)
 
 **TODO**: Blah blah blah...
 
-### Location
-
-**TODO**: Blah blah blah...
-
 ## Triple prefixes
+
+    <triple-prefixes>
+	   <decl>
+		  <prefix>foaf</prefix>
+		  <uri>http://xmlns.com/foaf/0.1/</uri>
+	   </decl>
+	   <decl>
+		  <prefix>prov</prefix>
+		  <uri>http://www.w3.org/ns/prov#</uri>
+	   </decl>
+    </triple-prefixes>
 
 **TODO**: Blah blah blah...
 
 ## URI schemes
+
+    <uri-schemes>
+	   <scheme sep="/">
+		  <root>
+			 <fix>/</fix>
+		  </root>
+		  <regex>/.*</regex>
+	   </scheme>
+	   <scheme sep="/">
+		  <root>
+			 <start>http://</start>
+		  </root>
+		  <regex match="1">(http://[^/]+/).*</regex>
+	   </scheme>
+    </uri-schemes>
 
 **TODO**: Blah blah blah...
 
