@@ -25,6 +25,7 @@ const menu = [
     { name: 'projects',  href: 'projects/',  title: 'Projects',  menu: []},
     { name: 'documents', href: 'documents/', title: 'Documents', menu: []},
     { name: 'profiler',  href: 'profiler/',  title: 'Profiler',  menu: []},
+    { name: 'tests',     href: 'tests/',     title: 'Tests',     menu: []},
 ];
 
 const sitemap = [
@@ -38,6 +39,7 @@ const sitemap = [
     { path: 'projects/index',  href: 'projects/',      title: 'Projects',     menu: menu },
     { path: 'documents/index', href: 'documents/',     title: 'Documents',    menu: menu },
     { path: 'profiler/index',  href: 'profiler/',      title: 'Profiler',     menu: menu },
+    { path: 'tests/index',     href: 'tests/',         title: 'Tests',        menu: menu },
     { path: 'contact',         href: 'contact',        title: 'Contact' },
     { copy: true, file: '.htaccess'  },
     { copy: true, file: 'index.html' },
