@@ -7,6 +7,7 @@ stored in documents with specific URI.
 - [Triple prefixes](#triple-prefixes)
 - [URI schemes](#uri-schemes)
 - [Default rulesets](#default-rulesets)
+- [Resolving components](#resolving-components)
 
 ## Config documents
 
@@ -64,14 +65,14 @@ prefixes, which are usually quite standard.)
 ## Triple prefixes
 
     <triple-prefixes>
-	   <decl>
-		  <prefix>foaf</prefix>
-		  <uri>http://xmlns.com/foaf/0.1/</uri>
-	   </decl>
-	   <decl>
-		  <prefix>prov</prefix>
-		  <uri>http://www.w3.org/ns/prov#</uri>
-	   </decl>
+       <decl>
+          <prefix>foaf</prefix>
+          <uri>http://xmlns.com/foaf/0.1/</uri>
+       </decl>
+       <decl>
+          <prefix>prov</prefix>
+          <uri>http://www.w3.org/ns/prov#</uri>
+       </decl>
     </triple-prefixes>
 
 **TODO**: Blah blah blah...
@@ -79,18 +80,18 @@ prefixes, which are usually quite standard.)
 ## URI schemes
 
     <uri-schemes>
-	   <scheme sep="/">
-		  <root>
-			 <fix>/</fix>
-		  </root>
-		  <regex>/.*</regex>
-	   </scheme>
-	   <scheme sep="/">
-		  <root>
-			 <start>http://</start>
-		  </root>
-		  <regex match="1">(http://[^/]+/).*</regex>
-	   </scheme>
+       <scheme sep="/">
+          <root>
+             <fix>/</fix>
+          </root>
+          <regex>/.*</regex>
+       </scheme>
+       <scheme sep="/">
+          <root>
+             <start>http://</start>
+          </root>
+          <regex match="1">(http://[^/]+/).*</regex>
+       </scheme>
     </uri-schemes>
 
 **TODO**: Blah blah blah...
@@ -103,3 +104,64 @@ prefixes, which are usually quite standard.)
     </default-rulesets>
 
 **TODO**: Blah blah blah...
+
+## Resolving components
+
+**TODO**: Blah blah blah...
+
+- Config components are grouped by type (prefixes, schemes and rulesets)
+- Each file can contribute to the set of components
+- The corresponding components are added to the global list
+- First doc on DB, then DB doc on MLC, then defaults, then internal
+- The first one matching in the list is used
+
+`@delegate` can be used to control the order when constructing the global list
+- `true` (or `after`), which is the default, components in subsequent docs are added after
+- `false` (or `never`), other subsequent docs are not considered
+- `before`, components in subsequent docs are added before
+
+=> give an example
+
+    <!-- http://expath.org/ml/console/config/Documents.xml -->
+    <config xmlns="http://expath.org/ns/ml/console">
+       <triple-prefixes delegate="before">
+          <decl>
+             <prefix>foo</prefix>
+             <uri>http://first.org/foo#</uri>
+          </decl>
+       </triple-prefixes>
+    </config>
+
+    <!-- http://expath.org/ml/console/defaults.xml -->
+    <config xmlns="http://expath.org/ns/ml/console">
+       <triple-prefixes>
+          <decl>
+             <prefix>foo</prefix>
+             <uri>http://second.org/foo#</uri>
+          </decl>
+          <decl>
+             <prefix>bar</prefix>
+             <uri>http://second.org/bar#</uri>
+          </decl>
+       </triple-prefixes>
+    </config>
+
+- the first document is taken into account first
+
+By default, the global list of triple prefix declarations would be:
+
+    foo -> http://first.org/foo#
+    foo -> http://second.org/foo#
+    bar -> http://second.org/bar#
+
+But because it actually delegates **before**, it is rather (see, the first `foo`
+in the list is now different):
+
+    foo -> http://second.org/foo#
+    bar -> http://second.org/bar#
+    foo -> http://first.org/foo#
+
+If `@delegate` was `never`, the list would rather be (there is no `bar` to be
+found anymore):
+
+    foo -> http://first.org/foo#
