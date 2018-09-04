@@ -1,6 +1,6 @@
-# Browser configuration
+# Configuration
 
-The browser can be configured by providing values for some config components,
+The ML Console can be configured by providing values for some config components,
 stored in documents with specific URI.
 
 - [Location](#location)
@@ -9,6 +9,11 @@ stored in documents with specific URI.
     - [URI schemes](#uri-schemes)
     - [Default rulesets](#default-rulesets)
 - [Resolving components](#resolving-components)
+
+Configuration is achieved by providing config components.  Most components can
+affect the entire Console as well as being restricted to a specific database.
+Controlling the scope of config components is done by using different config
+documents, in different locations.
 
 ## Location
 
@@ -89,16 +94,23 @@ semantics as the following prefix declaration in SPARQL:
 
     PREFIX prov: <http://www.w3.org/ns/prov#>
 
-It is used by the triple browser to display IRI in a human-friendly way.
+It is used by the triple browser to display IRI in a human-friendly way, using
+the CURIE notation.  You can then also use CURIE to search for a specific
+resource.  For instance, with the above mapping, the CURIE `prov:Entity` stands
+for the following IRI:
 
-**TODO**: Blah blah blah...
+    http://www.w3.org/ns/prov#Entity
 
 ### URI schemes
+
+Documents are browsed based on their URI, as if they were hierarchical, like
+paths for directories and files in a file system.  URI schemes configure how to
+present the URIs in a tree model.
 
     <uri-schemes>
        <scheme sep="/">
           <root>
-             <fix>/</fix>
+             <fixed>/</fixed>
           </root>
           <regex>/.*</regex>
        </scheme>
@@ -110,33 +122,67 @@ It is used by the triple browser to display IRI in a human-friendly way.
        </scheme>
     </uri-schemes>
 
-**TODO**: Blah blah blah...
+First you have to define the separator between the different parts of the paths.
+The most common separtor is `/`, but you can have `:` for instance in URNs.  Or
+any other separator you want.
+
+Then you define the "roots" of the hierarchy.  Either fixed, like `/` in
+`/foo/bar.xml`, or starting with a fixed string, like `http://` in
+`http://example.org/foo/bar.xml`.  Note that in the latter, the root is
+`http://example.org/` (with a "directory" `foo`, and the "file" `bar.xml`.)
+
+Finally, the `regex` is the regular expression matching an entire URI for this
+URI scheme to be applicable.  In case of a scheme with roots defined by a
+`start`, the regular expression must set a matching group (identified with
+parenthesis) to the value of the root.  In the example above for `http://` URIs,
+the matching group `1` is set to be the root.
 
 ### Default rulesets
+
+Rulesets are used to enrich the dataset for SPARQL queries using rules.  If you
+need them, you must already know what they are.
 
     <default-rulesets>
        <ruleset>domain.rules</ruleset>
        <ruleset>range.rules</ruleset>
     </default-rulesets>
 
-**TODO**: Blah blah blah...
+This element simply lists all the rulesets to be used by default when evaluating
+SPARQL queries in the triple browser.  This can enrich the set of triples
+associated to a resource IRI.  MarkLogic provides a set of builtin rulesets to
+use with ontologies, see the official documentation for more information.
 
 ## Resolving components
 
-**TODO**: Blah blah blah...
+Components are each of the individual config elements.  For instance, the
+`triple-prefixes` contains zero or several components, each materialized by a
+`decl` element.  The several config documents are merged to provide the set of
+applicable config component.
 
-- Config components are grouped by type (prefixes, schemes and rulesets)
-- Each file can contribute to the set of components
-- The corresponding components are added to the global list
-- First doc on DB, then DB doc on MLC, then defaults, then internal
-- The first one matching in the list is used
+Given a specific database, called `{db}`, the following config documents can
+contribute to the set of config components:
 
-`@delegate` can be used to control the order when constructing the global list
-- `true` (or `after`), which is the default, components in subsequent docs are added after
-- `false` (or `never`), other subsequent docs are not considered
-- `before`, components in subsequent docs are added before
+- `http://expath.org/ml/console/config.xml` (stored on `{db}` itself)
+- `http://expath.org/ml/console/config/{db}.xml`
+- `http://expath.org/ml/console/defaults.xml`
 
-=> give an example
+Components in the first document in this list have precendence over the other
+documents, and the second one over the last one.
+
+By default, all components in these documents are added to the final list of
+components, with the first matching component winning (in the above config
+document order.)
+
+You can use the attribute `@delegate` on a group of components (e.g. on the
+element `triple-prefixes`) to control the way components are merged into the
+final list.  The possible values are:
+
+- `true` (or `after`, the default) - components in subsequent docs are added
+  after
+- `false` (or `never`) - other subsequent docs are not considered
+- `before` - components in subsequent docs are added before
+
+For instance:
 
     <!-- http://expath.org/ml/console/config/Documents.xml -->
     <config xmlns="http://expath.org/ns/ml/console">
@@ -161,8 +207,6 @@ It is used by the triple browser to display IRI in a human-friendly way.
           </decl>
        </triple-prefixes>
     </config>
-
-- the first document is taken into account first
 
 By default, the global list of triple prefix declarations would be:
 
