@@ -9,7 +9,7 @@ You can browse:
 - [Collections](#collections)
 - [Triples](#triples)
 
-Some aspects of the browser can be configured.  See the section [Config](config).
+Some aspects of the browser can be configured.  See the section [Config](../config/).
 
 ## Documents
 

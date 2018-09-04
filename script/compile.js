@@ -18,29 +18,28 @@ const menu = [
 	{ name: 'install',  href: 'install',  title: 'Install' }
 //	{ name: 'concepts', href: 'concepts', title: 'Concepts' }
     ]},
-    { name: 'browser', href: 'browser/', title: 'Browser', menu: [
-	{ name: 'config',  href: 'config',  title: 'Config' }
-    ]},
+    { name: 'browser',   href: 'browser/',   title: 'Browser',   menu: []},
     { name: 'jobs',      href: 'jobs/',      title: 'Jobs',      menu: []},
     { name: 'projects',  href: 'projects/',  title: 'Projects',  menu: []},
     { name: 'documents', href: 'documents/', title: 'Documents', menu: []},
     { name: 'profiler',  href: 'profiler/',  title: 'Profiler',  menu: []},
     { name: 'tests',     href: 'tests/',     title: 'Tests',     menu: []},
+    { name: 'config',    href: 'config/',    title: 'Config',    menu: []},
 ];
 
 const sitemap = [
-    { path: 'start',           href: 'start',          title: 'Get started' },
-    { path: 'intro/index',     href: 'intro/',         title: 'Introduction', menu: menu },
-    { path: 'intro/install',   href: 'intro/install',  title: 'Install',      menu: menu },
+    { path: 'start',           href: 'start',         title: 'Get started' },
+    { path: 'intro/index',     href: 'intro/',        title: 'Introduction', menu: menu },
+    { path: 'intro/install',   href: 'intro/install', title: 'Install',      menu: menu },
 //    { path: 'intro/concepts',  href: 'intro/concepts', title: 'Concepts',     menu: menu },
-    { path: 'browser/index',   href: 'browser/',       title: 'Browser',      menu: menu },
-    { path: 'browser/config',  href: 'browser/config', title: 'Config',       menu: menu },
-    { path: 'jobs/index',      href: 'jobs/',          title: 'Jobs',         menu: menu },
-    { path: 'projects/index',  href: 'projects/',      title: 'Projects',     menu: menu },
-    { path: 'documents/index', href: 'documents/',     title: 'Documents',    menu: menu },
-    { path: 'profiler/index',  href: 'profiler/',      title: 'Profiler',     menu: menu },
-    { path: 'tests/index',     href: 'tests/',         title: 'Tests',        menu: menu },
-    { path: 'contact',         href: 'contact',        title: 'Contact' },
+    { path: 'browser/index',   href: 'browser/',      title: 'Browser',      menu: menu },
+    { path: 'jobs/index',      href: 'jobs/',         title: 'Jobs',         menu: menu },
+    { path: 'projects/index',  href: 'projects/',     title: 'Projects',     menu: menu },
+    { path: 'documents/index', href: 'documents/',    title: 'Documents',    menu: menu },
+    { path: 'profiler/index',  href: 'profiler/',     title: 'Profiler',     menu: menu },
+    { path: 'tests/index',     href: 'tests/',        title: 'Tests',        menu: menu },
+    { path: 'config/index',    href: 'config/',       title: 'Config',       menu: menu },
+    { path: 'contact',         href: 'contact',       title: 'Contact' },
     { copy: true, file: '.htaccess'  },
     { copy: true, file: 'index.html' },
     { copy: true, dir:  'css'        },
