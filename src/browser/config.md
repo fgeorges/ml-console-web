@@ -1,23 +1,22 @@
 # Browser configuration
 
-The browser can be configured by providing values for some config elements,
+The browser can be configured by providing values for some config components,
 stored in documents with specific URI.
 
-- [Config documents](#config-documents)
-- [Triple prefixes](#triple-prefixes)
-- [URI schemes](#uri-schemes)
-- [Default rulesets](#default-rulesets)
+- [Location](#location)
+- [Format](#format)
+    - [Triple prefixes](#triple-prefixes)
+    - [URI schemes](#uri-schemes)
+    - [Default rulesets](#default-rulesets)
 - [Resolving components](#resolving-components)
 
-## Config documents
+## Location
 
 The config documents are simple XML documents.  They are stored in specific
 locations, as the form to create them explains (at the bottom of the database
 browser screen):
 
 ![The config doc creation form](../images/create-config-docs.png)
-
-### Location
 
 There are three locations where we can have configuration for a specific
 database:
@@ -26,27 +25,26 @@ database:
 - `http://expath.org/ml/console/config/{db}.xml`
 - `http://expath.org/ml/console/defaults.xml`
 
-Let's say we look at the `Document` database.  The first location the
-Console looks at for config is
-`http://expath.org/ml/console/config.xml`, on the `Documents` database
-itself.
+Let's say we look at the `Document` database.  The first location that the
+Console looks at for config is `http://expath.org/ml/console/config.xml`, on the
+`Documents` database itself.
 
 Then it looks at `http://expath.org/ml/console/config/Documents.xml` (with the
 name of the database part of the URI), but this time on the ML Console database
 itself.  That is, the database attached as the content database on the Console
 app server.  The main advantage is that the document does not interfere with
-your data, and you don't have to insert it again and again when wiping your dev
-database, if this is part of your daily dev process.
+your data, and you don't have to insert it again and again when wiping your
+content database, if this is part of your dev process.
 
 Finally, the Console looks at `http://expath.org/ml/console/defaults.xml`, also
-on the ML Console own database.  This config in that document is applied to all
-databases.  In case you want to share config for all your databases (e.g. triple
-prefixes, which are usually quite standard.)
+on the ML Console own database.  The config in that document is applied to all
+databases.  This is in case you want to share config for all your databases
+(e.g. triple prefixes, which are usually quite standard.)
 
-### Format
+## Format
 
-**TODO**: Blah blah blah...
-"Created for you", etc.
+All the configuration documents share the same format.  The overall format is as
+following:
 
     <config xmlns="http://expath.org/ns/ml/console">
        <uri-schemes>
@@ -60,9 +58,20 @@ prefixes, which are usually quite standard.)
        </default-rulesets>
     </config>
 
-**TODO**: Blah blah blah...
+See the following sections for details on the format of each of these elements
+(uri schemes, triple prefixes and default rulesets.)
 
-## Triple prefixes
+When you use the above form to create such a config doc, it contains an empty
+configuration, incuding a comment containing an example of each element.
+
+So usually you just create the config doc in the interface, then copy and paste
+and adapt parts of it in place, in the document editor.  When you are happy with
+a config doc, you can download it and add it to your codebase, to be deployed
+with the rest of your documents or code, if you want to.
+
+### Triple prefixes
+
+List of additional triple prefixes to use in the triple browser:
 
     <triple-prefixes>
        <decl>
@@ -75,9 +84,16 @@ prefixes, which are usually quite standard.)
        </decl>
     </triple-prefixes>
 
+Each `decl` element is a pair prefix/URI.  The second one above has the same
+semantics as the following prefix declaration in SPARQL:
+
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+
+It is used by the triple browser to display IRI in a human-friendly way.
+
 **TODO**: Blah blah blah...
 
-## URI schemes
+### URI schemes
 
     <uri-schemes>
        <scheme sep="/">
@@ -96,7 +112,7 @@ prefixes, which are usually quite standard.)
 
 **TODO**: Blah blah blah...
 
-## Default rulesets
+### Default rulesets
 
     <default-rulesets>
        <ruleset>domain.rules</ruleset>
