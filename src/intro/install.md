@@ -3,10 +3,10 @@
 ## mlproj
 
 The Console uses `mlproj` as its project manager.  To install it, just use the
-following:
+following (or read the full [install notes](http://mlproj.org/doc/install)):
 
 ```
-sudo npm install mlproj -g
+npm install mlproj -g
 ```
 
 ## Download
