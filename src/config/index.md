@@ -214,8 +214,8 @@ By default, the global list of triple prefix declarations would be:
     foo -> http://second.org/foo#
     bar -> http://second.org/bar#
 
-But because it actually delegates **before**, it is rather (see, the first `foo`
-in the list is now different):
+But because it actually delegates `before`, it is rather as the following (see,
+the first `foo` in the list is now different):
 
     foo -> http://second.org/foo#
     bar -> http://second.org/bar#
